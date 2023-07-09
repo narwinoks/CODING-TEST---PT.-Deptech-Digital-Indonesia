@@ -1,13 +1,53 @@
-setup:
-first run 
-  1.composer install
-  2.php artisan key:generate
-  3.export database or
-    php artisan migrate:fresh --seed
-  4.setup env file for your database
-  5.php artisan serve
-  6.access login
-    email: "win@gmail.com"
-    password :"password"
-  
-  
+
+## Run Locally
+
+Clone the project
+
+```bash
+  https://github.com/narwinoks/CODING-TEST---PT.-Deptech-Digital-Indonesia
+```
+
+Go to the project directory
+
+```bash
+  cd my-project
+```
+
+Install dependencies
+
+```bash
+  composer Install
+```
+
+generate key
+
+```bash
+  php artisan key:generate
+```
+
+migrate database or export database
+
+```bash
+  php artisan migrate:fresh --seed
+```
+ Or
+
+```bash
+  export database in folder public/assets/db
+```
+
+Start the server
+
+```bash
+  php artisan serve
+```
+
+Access login
+
+```bash
+  email :admin@gmail.com
+  password :"password"
+```
+
+
+
