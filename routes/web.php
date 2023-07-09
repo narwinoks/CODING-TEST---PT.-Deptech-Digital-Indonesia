@@ -52,12 +52,18 @@ Route::middleware('auth')->group(function () {
     Route::name('absences.')->prefix('absences')->group(function () {
         Route::controller(AbsencesController::class)->group(function () {
             Route::get('/', 'index')->name('index');
+            Route::get('/create', 'create')->name('create');
+            Route::get('/{id}/edit', 'edit')->name('edit');
+            Route::post('/', 'store')->name('store');
+            Route::delete('/{id}', 'destroy')->name('destroy');
+            Route::put('/', 'update')->name('update');
         });
     });
     Route::name('data.')->prefix('data')->group(function () {
         Route::controller(DataController::class)->group(function () {
             Route::get('/admin', 'dataAdmin')->name('dataAdmin');
             Route::get('/employee', 'dataEmployee')->name('employee');
+            Route::get('/absences', 'dataAbsences')->name('absences');
         });
     });
 });

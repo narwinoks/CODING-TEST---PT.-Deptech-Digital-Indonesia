@@ -1,7 +1,7 @@
 @extends('templates.main')
 @section('content')
     <div class="container">
-        <a href="{{ route('admin.create') }}" class="btn btn-success btn-sm mt-5">Tambah</a>
+        <a href="{{ route('absences.create') }}" class="btn btn-success btn-sm mt-5">Tambah</a>
         <div class="card bg-transparent border-success mt-3">
             <div class="card-header bg-secondary">
                 <div class="d-flex justify-content-between text-white">
@@ -48,7 +48,7 @@
             responsive: true,
             scrollY: true,
             scrollCollapse: true,
-            ajax: '{{ route('data.dataAdmin') }}',
+            ajax: '{{ route('data.absences') }}',
             columns: [{
                     data: 'DT_RowIndex',
                     orderable: false,
@@ -56,16 +56,16 @@
                 },
 
                 {
-                    data: 'first_name'
+                    data: 'employee'
                 },
                 {
-                    data: 'last_name'
+                    data: 'start_date'
                 },
                 {
-                    data: 'email'
+                    data: 'end_date'
                 },
                 {
-                    data: 'email'
+                    data: 'description'
                 },
                 {
                     data: 'action'

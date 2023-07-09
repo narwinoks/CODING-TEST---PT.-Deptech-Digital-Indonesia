@@ -34,8 +34,17 @@ class DataController extends Controller
     {
         $data = Absence::with('employee')->orderBy('created_at', 'DESC')->get();
         return datatables()->of($data)
-            ->rawColumns(['first_name', 'last_name', 'email', 'phone', 'gender', 'address', 'action'])
-            ->addColumn('action', 'features.employee.action')
+            ->rawColumns(['start_date', 'end_date', 'description', 'employee', 'action'])
+            ->addColumn('action', 'features.absences.action')
+            ->addColumn('employee', function ($model) {
+                return $model->employee->first_name . ' ' . $model->employee->last_name;
+            })
+            ->editColumn('start_date', function ($model) {
+                return  \DateTime::createFromFormat('Y-m-d', $model->start_date)->format('d-m-Y');
+            })
+            ->editColumn('end_date', function ($model) {
+                return  \DateTime::createFromFormat('Y-m-d', $model->end_date)->format('d-m-Y');
+            })
             ->addIndexColumn()
             ->toJson();
     }
