@@ -10,4 +10,8 @@ class Employee extends Model
 {
     use HasFactory, SoftDeletes;
     protected $guarded = ['id'];
+    public function absence()
+    {
+        return $this->hasMany(Absence::class);
+    }
 }

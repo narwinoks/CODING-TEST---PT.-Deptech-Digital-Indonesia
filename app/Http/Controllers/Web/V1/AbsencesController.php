@@ -20,7 +20,6 @@ class AbsencesController extends Controller
         $employees = Employee::all();
         return view('features.absences.create', compact('employees'));
     }
-
     public function store(Request $request)
     {
         $request->validate([

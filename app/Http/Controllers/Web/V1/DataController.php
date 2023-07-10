@@ -48,4 +48,19 @@ class DataController extends Controller
             ->addIndexColumn()
             ->toJson();
     }
+    public function dataAbsencesEmployee(Request $request)
+    {
+        $data = Employee::with('absence')->orderBy('created_at', 'DESC')->get();
+        return datatables()->of($data)
+            ->rawColumns(['full_name', 'total', 'action'])
+            ->addColumn('action', 'features.absences.employee.action')
+            ->addColumn('full_name', function ($model) {
+                return $model->first_name . ' ' . $model->last_name;
+            })
+            ->addColumn('total', function ($model) {
+                return count($model->absence);
+            })
+            ->addIndexColumn()
+            ->toJson();
+    }
 }
